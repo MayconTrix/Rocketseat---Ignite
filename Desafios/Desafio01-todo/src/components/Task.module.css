@@ -1,0 +1,156 @@
+.emptyContent {
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50rem;
+    margin: auto;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+.info div {
+    display: flex;
+}
+
+.counter {
+    display: flex;
+    color: var(--gray-200);
+    background-color: var(--gray-400);
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 10px;
+    padding: 0 0.5rem;
+    margin-left: 0.2rem;
+}
+
+.info p {
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+}
+
+.info span {
+    display: flex;
+    color: var(--purple);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.1rem;
+}
+
+.emptyTasks {
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--gray-300);
+}
+
+.emptyTasks strong {
+    color: var(--gray-300);
+    padding-top: 1rem;
+}
+.emptyTasks span {
+    color: var(--gray-300);
+}
+
+.line {
+    width: 50rem;
+    border: 3px solid var(--gray-400);
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 0 0 2rem 0;
+    padding: 1rem;
+}
+
+/* ==================== >> Checked Button << ==================== */
+.infoChecked {
+    display: flex;
+    justify-content: space-between;
+    background: var(--gray-400);
+    border-radius: 0.875rem;
+    padding: 1rem;
+    display: none;
+}
+
+.infoChecked p {
+    font-size: 0.875rem;
+    text-decoration: line-through;
+    color: var(--gray-300);
+}
+
+.checkedButton {
+    background: transparent;
+    color: var(--purple-dark);
+    border: 0;
+    border-radius: 100%;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.checkedButton:hover {
+    color: var(--purple);
+}
+.checkedButton:checked {
+    text-decoration: line-through;
+}
+
+/* ==================== >> Add Tasks << ==================== */
+.addTasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 4rem;
+}
+
+.addTasks input {
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    font-weight: 400;
+    padding-left: 1rem;
+    width: 46rem;
+    height: 3.375rem;
+    margin-top: calc(12.5rem - 14.3rem - 0rem);
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--gray-700);
+    background: var(--gray-500);
+    color: var(--gray-100);
+}
+
+.addTasks button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    width: 6rem;
+    height: 3.375rem;
+    margin-top: calc(12.5rem - 14.3rem - 0rem);
+    border-radius: 0.5rem;
+    border: 0.1rem solid var(--gray-700);
+    background: var(--blue-dark);
+    color: var(--gray-100);
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.addTasks button:hover {
+    background: var(--blue);
+}
+
+.addTasks button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
