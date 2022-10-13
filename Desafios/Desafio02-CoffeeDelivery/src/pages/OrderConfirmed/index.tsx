@@ -4,9 +4,31 @@ import confirmedOrderImg from "../../assets/confirmedOrder.svg";
 import { MapPin, Clock, CurrencyDollar } from "phosphor-react";
 import { InfoWithIcon } from "../../components/Header/InfoWithIcon";
 import { useTheme } from "styled-components";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { OrderData } from "../CompleteOrder";
+import { saturate } from "polished";
+import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
+import { useEffect } from "react";
+
+interface LocationType {
+  state: OrderData;
+}
 
 export function OrderConfirmedPage() {
   const { colors } = useTheme();
+
+  const { state } = useLocation() as unknown as LocationType;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, []);
+
+  if (!state) return <></>;
+
   return (
     <OrderConfirmedContainer className="container">
       <div>
@@ -21,9 +43,12 @@ export function OrderConfirmedPage() {
             icon={<MapPin weight="fill" />}
             text={
               <RegularText>
-                Entrega em <strong>Rua João Daniel Martinelli, 182</strong>
+                Entrega em{" "}
+                <strong>
+                  {state.street}, {state.number}
+                </strong>
                 <br />
-                Farrapos - Porto Alegre, RS
+                {state.district} - {state.city}, {state.uf}
               </RegularText>
             }
             iconBg={colors["brand-purple"]}
@@ -45,7 +70,7 @@ export function OrderConfirmedPage() {
               <RegularText>
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
             iconBg={colors["brand-yellow-dark"]}
