@@ -21,10 +21,12 @@ export interface IPost {
 }
 export function Blog() {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getPosts = useCallback(
     async (query: string = "") => {
       try {
+        setIsLoading(true);
         const response = await api.get(
           `/search/issues?q=${query}%20repo:${username}/${repoName}`
         );
@@ -33,6 +35,7 @@ export function Blog() {
 
         setPosts(response.data.items);
       } finally {
+        setIsLoading(false);
       }
     },
     [posts]
@@ -47,13 +50,9 @@ export function Blog() {
       <Profile />
       <SearchInput />
       <PostsListContainer>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts.map((post) => (
+          <Post key={post.number} post={post} />
+        ))}
       </PostsListContainer>
     </>
   );

@@ -1,6 +1,11 @@
+import { IPost } from "../..";
 import { PostContainer } from "./styled";
 
-export function Post() {
+interface PostProps {
+  post: IPost;
+}
+
+export function Post({ post }: PostProps) {
   return (
     <PostContainer to="/post/1">
       <div>
