@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { api } from "../../lib/axios";
 import { Post } from "./components/Post";
 import { Profile } from "./components/Profile";
@@ -9,6 +9,7 @@ const username = import.meta.env.VITE_GITHUB_USERNAME;
 const repoName = import.meta.env.VITE_GITHUB_REPONAME;
 
 export interface IPost {
+  created_at: string;
   title: string;
   body: string;
   createdAt: string;
