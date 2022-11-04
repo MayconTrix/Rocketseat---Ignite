@@ -3,6 +3,7 @@ import { faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useState } from "react";
 import { ExternalLink } from "../../../../components/ExterlLink";
+import { Spinner } from "../../../../components/Spinner";
 import { api } from "../../../../lib/axios";
 import { ProfileContainer, ProfileDetails, ProfilePicture } from "./styles";
 
@@ -40,35 +41,41 @@ export function Profile() {
 
   return (
     <ProfileContainer>
-      <ProfilePicture src={profileData.avatar_url} />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <ProfilePicture src={profileData.avatar_url} />
 
-      <ProfileDetails>
-        <header>
-          <h1>{profileData.name}</h1>
-          <ExternalLink
-            text="GitHub"
-            href={profileData.html_url}
-            target="_blank"
-          />
-        </header>
-        <p>{profileData.bio}</p>
-        <ul>
-          <li>
-            <FontAwesomeIcon icon={faGithub} />
-            {profileData.login}
-          </li>
-          {profileData?.company && (
-            <li>
-              <FontAwesomeIcon icon={faBuilding} />
-              {profileData.company}
-            </li>
-          )}
-          <li>
-            <FontAwesomeIcon icon={faUserGroup} />
-            {profileData.followers} seguidores
-          </li>
-        </ul>
-      </ProfileDetails>
+          <ProfileDetails>
+            <header>
+              <h1>{profileData.name}</h1>
+              <ExternalLink
+                text="GitHub"
+                href={profileData.html_url}
+                target="_blank"
+              />
+            </header>
+            <p>{profileData.bio}</p>
+            <ul>
+              <li>
+                <FontAwesomeIcon icon={faGithub} />
+                {profileData.login}
+              </li>
+              {profileData?.company && (
+                <li>
+                  <FontAwesomeIcon icon={faBuilding} />
+                  {profileData.company}
+                </li>
+              )}
+              <li>
+                <FontAwesomeIcon icon={faUserGroup} />
+                {profileData.followers} seguidores
+              </li>
+            </ul>
+          </ProfileDetails>
+        </>
+      )}
     </ProfileContainer>
   );
 }
