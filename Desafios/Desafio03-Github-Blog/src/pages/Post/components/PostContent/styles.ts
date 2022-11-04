@@ -16,11 +16,17 @@ export const PostContentContainer = styled.section`
   pre {
     background: ${({ theme }) => theme.colors["base-post"]};
     padding: 1rem;
+    border-radius: 6px;
 
     > div {
       background: none !important;
       padding: 0 !important;
       margin: 0 !important;
+
+      code {
+        font-family: "FiraCode", monospace !important;
+        line-height: 160% !important;
+      }
     }
   }
 `;
