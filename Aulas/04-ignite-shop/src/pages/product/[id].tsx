@@ -19,7 +19,6 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-  console.log(product);
   return (
     <ProductContainer>
       <ImageContainer>
