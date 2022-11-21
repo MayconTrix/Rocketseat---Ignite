@@ -92,11 +92,12 @@ export default function Dashboard() {
             padding="8"
             background="gray.800"
             borderRadius={8}
-            // paddingBottom='4'
+            paddingBottom="4"
           >
             <Text fontSize="lg" marginBottom="4">
               Taxa de abertura
             </Text>
+            <Chart options={option} series={series} type="area" height={160} />
           </Box>
         </SimpleGrid>
       </Flex>
