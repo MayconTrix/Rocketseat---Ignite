@@ -9,10 +9,13 @@ import { SearchBox } from "./SearchBox";
 export function Header() {
   const { onOpen } = useSidebarDrawer();
 
-  const isWideVersion = useBreakpointValue({
-    base: false,
-    md: true,
-  });
+  const isWideVersion = useBreakpointValue(
+    {
+      base: false,
+      lg: true,
+    },
+    "lg"
+  );
   return (
     <Flex
       as="header"
